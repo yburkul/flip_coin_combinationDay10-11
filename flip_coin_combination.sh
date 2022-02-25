@@ -95,9 +95,9 @@ THH=0
 THT=0
 for(( i=0 ; i<10 ; i++ ))
 do
-   coin1=$((RANDOM%3))
-   coin2=$((RANDOM%3))
-   coin3=$((RANDOM%3))
+   coin1=$((RANDOM%2))
+   coin2=$((RANDOM%2))
+   coin3=$((RANDOM%2))
 
    if (( $coin1==1 && $coin2==1 && $coin3==1 ))
    then
