@@ -81,3 +81,86 @@ echo "Persentage of Head_Head is:" $head_head_persent
 echo "Persentage of Tail_Tail is:" $tail_tail_persent
 echo "Persentage of Head_Tail is:" $head_tail_persent
 echo "Persentage of Tail_Head is:" $tail_head_persent
+
+
+#For Triplet combination
+
+HHH=0
+TTT=0
+HHT=0
+HTT=0
+HTH=0
+TTH=0
+THH=0
+THT=0
+for(( i=0 ; i<10 ; i++ ))
+do
+   coin1=$((RANDOM%3))
+   coin2=$((RANDOM%3))
+   coin3=$((RANDOM%3))
+
+   if (( $coin1==1 && $coin2==1 && $coin3==1 ))
+   then
+        triplet[$i]="(Head-Head-Head)"
+             (( HHH++ ))
+   elif (( $coin1==0 && $coin2==0 && $coin3==o ))
+   then
+        triplet[$i]="(Tail-Tail-Tail)"
+             (( TTT++ ))
+   elif (( $coin1==1 && $coin2==1 && $coin3==0 ))
+   then
+        triplet[$i]="(Head-Head-Tail)"
+             (( HHT++ ))
+   elif (( $coin1==1 && $coin2==0 && $coin3==0 ))
+   then
+        triplet[$i]="(Head-Tail-Tail)"
+             (( HTT++ ))
+   elif (( $coin1==1 && $coin2==0 && $coin3==1 ))
+   then
+        triplet[$i]="(Head-Tail-Head)"
+             (( HTH++ ))
+   elif (( $coin1==0 && $coin2==0 && $coin==1 ))
+   then
+         triplet[$i]="(Tail-Tail-Head)"
+              (( TTH++ ))
+   elif (( $coin1==0 && $coin2==1 && $coin==1 ))
+   then
+         triplet[$i]="(Tail-Head-Head)"
+              (( THH++ ))
+   elif (( $coin1==0 && $coin2==1 && $coin==0 ))
+   then
+         triplet[$i]="(Tail-Head-Tail)"
+              (( THT++ ))
+   else
+          exit
+   fi
+done
+
+echo ${triplet[@]}
+
+head_head_head_persent=$(( $(($HHH / $i)) * 100 | bc ))
+tail_tail_tail_persent=$(( $(($TTT / $i)) * 100 | bc ))
+head_head_tail_persent=$(( $(($HHT / $i)) * 100 | bc ))
+head_tail_tail_persent=$(( $(($HTT / $i)) * 100 | bc ))
+head_tail_head_persent=$(( $(($HTH / $i)) * 100 | bc ))
+tail_tail_head_persent=$(( $(($TTH / $i)) * 100 | bc ))
+tail_head_head_persent=$(( $(($THH / $i)) * 100 | bc ))
+tail_head_tail_persent=$(( $(($THT / $i)) * 100 | bc ))
+
+
+echo "Head-Head-Head count:" $HHH
+echo "Tail_Tail-Tail count:" $TTT
+echo "Head-Head-Tail count:" $HHT
+echo "Head-Tail-Tail count:" $HTT
+echo "Head-Tail-Head count:" $HTH
+echo "Tail-Tail-Head count:" $TTH
+echo "Tail-Head-Head count:" $THH
+echo "Tail-Head-Tail count:" $THT
+echo "Persentage of Head_Head_Head is:" $head_head_head_persent
+echo "Persentage of Tail_Tail_Tail is:" $tail_tail_tail_persent
+echo "Persentage of Head_Head_Tail is:" $head_head_tail_persent
+echo "Persentage of Head_Tail_Tail is:" $head_tail_tail_persent
+echo "Persentage of Head-Tail-Head is:" $head_tail_head_persent
+echo "Persentage of Tail-Tail-Head is:" $tail_tail_head_persent
+echo "Persentage of Tail-Head-Head is:" $tail_head_head_persent
+echo "Persentage of Tail-Head-Tail is:" $tail_head_tail_persent
